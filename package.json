@@ -1,7 +1,7 @@
 {
-  "name": "lsview",
+  "name": "lishiview",
   "version": "2.13.0",
-  "title": "lsview",
+  "title": "lishiview",
   "description": "A high quality  UI components Library with Vue.js",
   "homepage": "http://www.iviewui.com",
   "keywords": [
@@ -35,7 +35,7 @@
     "type": "git",
     "url": "https://github.com/iview/iview"
   },
-  "author": "Aresn",
+  "author": "lbb",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/iview/iview/issues"
