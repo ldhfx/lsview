@@ -97,3 +97,39 @@
         }
     }
 }
+
+@input-prefix-cls-new: ~"@{css-prefix-new}input";
+.@{input-prefix-cls-new}-wrapper{
+    border:1px solid #cdcdcd;
+    border-radius:4px;
+    width:158px;
+    height:26px;
+    padding:0px 6px;
+    &.@{input-prefix-cls-new}-wrapper-focus{
+        border:1px solid @color-active;
+        box-shadow:1px 1px 5px @color-active;
+    }
+    input{
+        background-color: transparent;
+        border-width: 0px;
+        width: 100%;
+        height: 100%;
+        color: white;
+    }
+    &.@{input-prefix-cls-new}-search{
+      padding:0px 0px 0px 6px;
+      a{
+        display: inline-block;
+        font-size: 12px;
+        line-height: 1;
+        width: 22px;
+        height: auto;
+        text-align: center;
+        color: #fff;
+      }
+      input{
+        width: calc(~'100% - 26px');
+        height: 100%;
+      }
+    }
+}
