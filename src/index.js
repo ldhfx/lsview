@@ -1,11 +1,30 @@
 
 import Button from './components/button';
 
+import Card from './components/card';
+import {Select, Option, OptionGroup} from './components/select';
+import Radio from './components/radio';
+import RadioGroup from './components/radio-group';
+import Input from './components/input';
+import InputNumber from './components/input-number';
+
+import Collapse from './components/collapse';
+
 import locale from './locale/index';
 
 const components = {
 
     Button,
+    Card,
+    Select,
+    Option,
+    OptionGroup,
+    Radio,
+    RadioGroup,
+    Input,
+    InputNumber,
+
+    Collapse
    
 };
 

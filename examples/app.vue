@@ -18,7 +18,10 @@ nav {
             <ul>
               
                 <li><router-link to="/button">Button</router-link></li>
-               
+                <li><router-link to="/card">Card</router-link></li>
+                <li><router-link to="/select">Select</router-link></li>
+                <li><router-link to="/radio">Radio</router-link></li>
+                <li><router-link to="/input">Input</router-link></li>
             </ul>
         </nav>
         <router-view></router-view>
