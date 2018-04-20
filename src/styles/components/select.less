@@ -294,3 +294,113 @@
         }
     }
 }
+
+@select-prefix-cls-new: ~"@{css-prefix-new}select";
+.@{select-prefix-cls-new}{
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    vertical-align: middle;
+    color: @color-white;
+    font-size: 14px;
+    line-height: normal;
+    &:focus{
+        outline-width: 0px;
+    }
+    &-single{
+      .@{select-prefix-cls-new}-selection{
+        height: 32px;
+        position: relative;
+      }
+    }
+    &-selection{
+      display: block;
+      box-sizing: border-box;
+      outline: 0;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      position: relative;
+      background-color:transparent;
+      border-radius: 4px;
+      border: 1px solid #dddee1;
+      transition: all .2s ease-in-out;
+      &.@{select-prefix-cls-new}-focus{
+        border:1px solid @color-green;
+        box-shadow:1px 1px 5px @color-green;
+      }
+      input{
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        &.@{select-prefix-cls-new}-input{
+          background-color: transparent;
+          height: 30px;
+          font-size: 12px;
+          line-height: 30px;
+          border-width: 0px;
+          padding-left: 8px;
+          color: #fff;
+          width: calc(~'100% - 32px');
+        }
+      }
+      
+      .@{select-prefix-cls-new}-placeholder,.@{select-prefix-cls-new}-selected-value{
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-left: 8px;
+        padding-right: 24px;
+      }
+      .@{select-prefix-cls-new}-state-icon{
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        line-height: 1;
+        margin-top: -7px;
+        font-size: 14px;
+        color: #fff;
+        transition: all .2s ease-in-out;
+      }
+      .@{select-prefix-cls-new}-tag{
+        display: inline-block;
+        height: 22px;
+        line-height: 22px;
+        margin: 4px; 
+        padding: 0 8px;
+        border-radius: 3px;
+        font-size: 12px;
+        vertical-align: middle;
+        opacity: 1;
+        overflow: hidden;
+        cursor: pointer;
+        background-color: @background-color;
+      }
+      
+    }
+    &-dropdown-transfer{
+      border: 1px solid #dddee1;
+      border-radius: 4px;
+      margin-top: 6px;
+    }
+    &-not-found{
+      li{
+        margin: 0;
+        line-height: normal;
+        padding: 7px 16px;
+        clear: both;
+        color: @color-white;
+        font-size: 12px!important;
+        white-space: nowrap;
+        list-style: none;
+        text-align: center;
+      }
+    }
+  }
+  
