@@ -42,11 +42,18 @@
   },
   "dependencies": {
     "async-validator": "^1.8.2",
+    "css-loader": "^0.28.11",
     "deepmerge": "^2.1.0",
     "element-resize-detector": "^1.1.14",
+    "file-loader": "^1.1.11",
+    "font-awesome": "^4.7.0",
+    "font-awesome-webpack": "^0.0.5-beta.2",
     "js-calendar": "^1.2.3",
+    "less": "^2.7.3",
+    "less-loader": "^4.1.0",
     "lodash.throttle": "^4.1.1",
     "popper.js": "^1.14.1",
+    "style-loader": "^0.20.3",
     "tinycolor2": "^1.4.1"
   },
   "peerDependencies": {
