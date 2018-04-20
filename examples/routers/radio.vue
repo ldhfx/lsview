@@ -1,54 +1,39 @@
 <template>
-    <div>
-        <Radio size="large" v-model="single">Radio</Radio>
-        <Radio size="default" v-model="single">Radio</Radio>
-        <Radio size="small" v-model="single">Radio</Radio>
-        <br><br>
-        <Radio-group v-model="phone">
-            <Radio label="apple">
-                <Icon type="social-apple"></Icon>
-                <span>Apple</span>
-            </Radio>
-            <Radio label="android">
-                <Icon type="social-android"></Icon>
-                <span>Android</span>
-            </Radio>
-            <Radio label="windows">
-                <Icon type="social-windows"></Icon>
-                <span>Windows</span>
-            </Radio>
-        </Radio-group>
-        <Radio-group v-model="button2" type="button" size="large">
-            <Radio label="北京"></Radio>
-            <Radio label="上海" disabled></Radio>
-            <Radio label="深圳"></Radio>
-            <Radio label="杭州"></Radio>
-        </Radio-group>
-        <Radio-group v-model="button2" type="button" size="default">
-            <Radio label="北京"></Radio>
-            <Radio label="上海" disabled></Radio>
-            <Radio label="深圳"></Radio>
-            <Radio label="杭州"></Radio>
-        </Radio-group>
-        <Radio-group v-model="button2" type="button" size="small">
-            <Radio label="北京"></Radio>
-            <Radio label="上海" disabled></Radio>
-            <Radio label="深圳"></Radio>
-            <Radio label="杭州"></Radio>
-        </Radio-group>
+    <div class="radio-main" style="paddingLeft:10px">
+      <RadioGroup v-model="name" :name="name">
+        <Radio label="demo1"></Radio>
+        <Radio label="demo2"></Radio>
+        <Radio label="demo3"></Radio>
+      </RadioGroup>
+      <br>11111<br>
+      <Radio>{{label}}</Radio>
+      <br>11111<br>
+      <RadioGroup type="button" v-model="name2" :name="name2">
+        <Radio label="demo1"></Radio>
+        <Radio label="demo2"></Radio>
+        <Radio label="demo3"></Radio>
+      </RadioGroup>
     </div>
 </template>
-<script>
-    export default {
-        data () {
-            return {
-                single: true,
-                phone: '',
-                button2: '北京',
-            };
-        },
-        methods: {
 
-        }
-    };
+
+<script>
+export default {
+    data () {
+        return {
+            name: 'demo1',
+            name2: 'demo1',
+            label: '哈哈哈',
+            labelList: ['demo1,demo2,demo3']
+        };
+    }
+};
 </script>
+
+<style lang="less" scoped>
+.radio-main{
+    padding: 60px;
+    background-color: rgba(0,0,0,0.6);
+}
+</style>
+

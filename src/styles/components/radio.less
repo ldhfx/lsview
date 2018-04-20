@@ -1,111 +1,74 @@
-@radio-prefix-cls: ~"@{css-prefix}radio";
+@radio-prefix-cls: ~"@{css-prefix-new}radio";
 @radio-group-prefix-cls: ~"@{radio-prefix-cls}-group";
 @radio-inner-prefix-cls: ~"@{radio-prefix-cls}-inner";
 @radio-group-button-prefix-cls: ~"@{radio-group-prefix-cls}-button";
 
-.@{radio-prefix-cls}-focus {
-    box-shadow: 0 0 0 2px fade(@primary-color, 20%);
-    z-index: 1;
-}
-
-.@{radio-group-prefix-cls} {
+.@{radio-group-prefix-cls}{
     display: inline-block;
-    font-size: @font-size-small;
+    font-size: 12px;
     vertical-align: middle;
-    //outline: none;
-    &-vertical{
-        .@{radio-prefix-cls}-wrapper {
-            display: block;
-            height: 30px;
-            line-height: 30px;
-        }
-    }
 }
-
-// 普通状态 - Normal state
-.@{radio-prefix-cls}-wrapper {
-    font-size: @font-size-small;
+.@{radio-prefix-cls}-wrapper{
+    font-size: 12px;
     vertical-align: middle;
     display: inline-block;
     position: relative;
     white-space: nowrap;
     margin-right: 8px;
     cursor: pointer;
-    &-disabled{
-        cursor: @cursor-disabled;
-    }
-    //outline: none;
-}
-
-.@{radio-prefix-cls} {
-    display: inline-block;
-    margin-right: 4px;
-    white-space: nowrap;
-    //outline: none;
-    position: relative;
-    line-height: 1;
-    vertical-align: middle;
-    cursor: pointer;
-    &:hover {
-        .@{radio-inner-prefix-cls} {
-            border-color: #bcbcbc;
+    color:@color-normal;
+    &:hover{
+      .@{radio-prefix-cls}{
+        .@{radio-prefix-cls}-inner{
+          border-color: @color-hover;
         }
+      }
     }
-    &-inner {
+    .@{radio-prefix-cls}{
+      display: inline-block;
+      margin-right: 4px;
+      white-space: nowrap;
+      position: relative;
+      line-height: 1;
+      vertical-align: middle;
+      cursor: pointer;
+      &.@{radio-prefix-cls}-checked{
+        .@{radio-prefix-cls}-inner{
+          border-color: @color-active;
+          &::after{
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+      .@{radio-prefix-cls}-inner{
         display: inline-block;
         width: 14px;
         height: 14px;
         position: relative;
         top: 0;
         left: 0;
-        background-color: #fff;
-        border: 1px solid @border-color-base;
+        border: 1px solid @color-white;
         border-radius: 50%;
-        transition: all @transition-time @ease-in-out;
-
-        &:after {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            left: 2px;
-            top: 2px;
-            border-radius: @border-radius-base;
-            display: table;
-            border-top: 0;
-            border-left: 0;
-            content: ' ';
-            background-color: @primary-color;
-            opacity: 0;
-            transition: all @transition-time @ease-in-out;
-            transform: scale(0);
+        transition: all 0.2s ease-in-out;
+        &::after{
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          left: 2px;
+          top: 2px;
+          border-radius: 6px;
+          display: table;
+          border-top: 0;
+          border-left: 0;
+          content: ' ';
+          background-color: @color-active;
+          opacity: 0;
+          transition: all 0.2s ease-in-out;
+          transform: scale(0);
         }
-    }
-    &-large{
-        font-size: @font-size-base;
-        & .@{radio-inner-prefix-cls}{
-            width: 16px;
-            height: 16px;
-            &:after{
-                width: 10px;
-                height: 10px;
-            }
-        }
-        &.@{radio-prefix-cls}-wrapper, & .@{radio-prefix-cls}-wrapper{
-            font-size: @font-size-base;
-        }
-    }
-    &-small{
-        & .@{radio-inner-prefix-cls}{
-            width: 12px;
-            height: 12px;
-            &:after{
-                width: 6px;
-                height: 6px;
-            }
-        }
-    }
-
-    &-input {
+      }
+      &-input{
         position: absolute;
         top: 0;
         bottom: 0;
@@ -114,230 +77,101 @@
         z-index: 1;
         opacity: 0;
         cursor: pointer;
+      }
     }
-}
-
-// 选中状态 - Selected state
-.@{radio-prefix-cls}-checked {
-    .@{radio-inner-prefix-cls} {
-        border-color: @primary-color;
-        &:after {
-            opacity: 1;
-            transform: scale(1);
-            transition: all @transition-time @ease-in-out;
-        }
-    }
-    &:hover {
-        .@{radio-inner-prefix-cls} {
-            border-color: @primary-color;
-        }
-    }
-}
-
-.@{radio-prefix-cls}-disabled {
-    cursor: @cursor-disabled;
-    .@{radio-prefix-cls}-input {
-        cursor: @cursor-disabled;
-    }
-
-    &:hover {
-        .@{radio-inner-prefix-cls} {
-            border-color: @border-color-base;
-        }
-    }
-    .@{radio-inner-prefix-cls} {
-        border-color: @border-color-base;
-        background-color: #f3f3f3;
-        &:after {
-            background-color: #cccccc;
-        }
-    }
-
-    .@{radio-prefix-cls}-disabled + span {
-        color: #ccc;
-    }
-}
-
-span.@{radio-prefix-cls} + * {
-    margin-left: 2px;
-    margin-right: 2px;
-}
-
-// 按钮样式 - Button style
-.@{radio-group-button-prefix-cls} {
+  }
+  .@{radio-group-button-prefix-cls}{
+    display: inline-block;
     font-size: 0;
-    -webkit-text-size-adjust:none;
-
-    .@{radio-prefix-cls}{
+    vertical-align: middle;
+    .@{radio-prefix-cls}-wrapper{
+      height: 36px;
+      line-height: 34px;
+      font-size: 14px;
+      display: inline-block;
+      margin: 0;
+      padding: 0 15px;
+      color: @color-white;
+      transition: all .2s ease-in-out;
+      cursor: pointer;
+      border: 1px solid @color-white;
+      border-left: 0;
+      background: transparent;
+      position: relative;
+      &::before{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        left: -1px;
+        top: 0;
+        background: @color-white;
+        transition: all .2s ease-in-out;
+      }          
+      
+      &::after{
+        height: 36px;
+        left: -1px;
+        top: -3px;
+        background: rgba(45,140,240,.2);
+        opacity: 0;
+      }
+      
+      &:first-child{
+        &::before{
+          width: 0px;
+        }
+        border:1px solid @color-white;
+        border-radius: 4px 0 0 4px;
+      }
+      &:last-child{
+        border-radius: 0 4px 4px 0;
+      }
+      &:hover{
+        z-index: 1;
+        color:@color-hover;
+        border-color: @color-hover;
+        &::before{
+          background: @color-hover;
+        }
+        &::after{
+          background: @color-hover;
+        }
+      }
+      &.@{radio-prefix-cls}-wrapper-checked{
+        z-index: 1;
+        color:@color-active;
+        border-color: @color-active;
+        &::before{
+          background: @color-active;
+        }
+        &::after{
+          background: @color-active;
+        }
+      }
+      .@{radio-prefix-cls}{    
         width: 0;
-        margin-right: 0;
-    }
-
-    .@{radio-prefix-cls}-wrapper {
         display: inline-block;
-        height: @btn-circle-size;
-        line-height: @btn-circle-size - 2px;
-        margin: 0;
-        padding: 0 16px - 1px;
-        font-size: @font-size-small;
-        color: @btn-default-color;
-        transition: all @transition-time ease-in-out;
-        cursor: pointer;
-        border: 1px solid @border-color-base;
-        border-left: 0;
-        background: #fff;
+        white-space: nowrap;
         position: relative;
-
-        > span {
-            margin-left: 0;
+        line-height: 1;
+        vertical-align: middle;
+        cursor: pointer;
+        margin-left: 0;
+        &&-checked{
+          .@{radio-prefix-cls}-inner{
+            
+          }
         }
-
-        &:before, &:after {
-            content: '';
-            display: block;
-            position: absolute;
-            width: 1px;
-            height: 100%;
-            left: -1px;
-            top: 0;
-            background: @border-color-base;
-            //visibility: hidden;
-            transition: all @transition-time ease-in-out;
+        .@{radio-prefix-cls}-inner{
+          opacity: 0;
+          width: 0;
+          height: 0;
         }
-
-        &:after{
-            height: @btn-circle-size + 4px;
-            left: -1px;
-            top: -3px;
-            background: fade(@primary-color, 20%);
-            opacity: 0;
+        .@{radio-prefix-cls}-input{
+  
         }
-
-        &:first-child {
-            border-radius: @btn-border-radius 0 0 @btn-border-radius;
-            border-left: 1px solid @border-color-base;
-            &:before, &:after {
-                display: none;
-            }
-        }
-
-        &:last-child {
-            border-radius: 0 @btn-border-radius @btn-border-radius 0;
-        }
-
-        &:first-child:last-child {
-            border-radius: @btn-border-radius;
-        }
-
-        &:hover {
-            position: relative;
-            color: @primary-color;
-            & .@{radio-prefix-cls} {
-                background-color: black;
-            }
-        }
-
-        .@{radio-prefix-cls}-inner,
-        input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        &-checked {
-            background: #fff;
-            border-color: @primary-color;
-            color: @primary-color;
-            box-shadow: -1px 0 0 0 @primary-color;
-            z-index: 1;
-
-            &:before{
-                background: @primary-color;
-                opacity: 0.1;
-            }
-
-            &.@{radio-prefix-cls}-focus{
-                box-shadow: -1px 0 0 0 @primary-color, 0 0 0 2px fade(@primary-color, 20%);
-                transition: all @transition-time ease-in-out;
-                &:after{
-                    left: -3px;
-                    top: -3px;
-                    opacity: 1;
-                    background: fade(@primary-color, 20%);
-                }
-                &:first-child{
-                    box-shadow: 0 0 0 2px fade(@primary-color, 20%);
-                }
-            }
-
-            &:first-child {
-                border-color: @primary-color;
-                box-shadow: none;
-            }
-
-            &:hover {
-                border-color: tint(@primary-color, 20%);
-                //box-shadow: -1px 0 0 0 tint(@primary-color, 20%);
-                color: tint(@primary-color, 20%);
-            }
-
-            &:active {
-                border-color: shade(@primary-color, 5%);
-                //box-shadow: -1px 0 0 0 shade(@primary-color, 5%);
-                color: shade(@primary-color, 5%);
-            }
-        }
-
-        &-disabled {
-            border-color: @border-color-base;
-            background-color: @background-color-base;
-            cursor: @cursor-disabled;
-            color: #ccc;
-
-            &:first-child,
-            &:hover {
-                border-color: @border-color-base;
-                background-color: @background-color-base;
-                color: #ccc;
-            }
-            &:first-child {
-                border-left-color: @border-color-base;
-            }
-        }
-
-        &-disabled.@{radio-prefix-cls}-wrapper-checked {
-            color: #fff;
-            background-color: #e6e6e6;
-            border-color: @border-color-base;
-            box-shadow: none!important;
-        }
+      }
     }
-}
-
-.@{radio-group-button-prefix-cls}.@{radio-group-prefix-cls}-large .@{radio-prefix-cls}-wrapper{
-    height: @btn-circle-size-large;
-    line-height: @btn-circle-size-large - 2px;
-    font-size: @font-size-base;
-    &:after{
-        height: @btn-circle-size-large + 4px;
-    }
-}
-
-.@{radio-group-button-prefix-cls}.@{radio-group-prefix-cls}-small .@{radio-prefix-cls}-wrapper{
-    height: @btn-circle-size-small;
-    line-height: @btn-circle-size-small - 2px;
-    padding: 0 12px;
-    font-size: @font-size-small;
-
-    &:after{
-        height: @btn-circle-size-small + 4px;
-    }
-
-    &:first-child {
-        border-radius: @btn-border-radius-small 0 0 @btn-border-radius-small;
-    }
-    &:last-child {
-        border-radius: 0 @btn-border-radius-small @btn-border-radius-small 0;
-    }
-}
-
+  }
