@@ -1,17 +1,21 @@
 <template>
     <div class="select-main">
-      <Select class="select" :placeholder="placeholder" v-model="model1" style="width:200px">
+      <Select class="select"  v-model="model1" style="width:200px">
         <Option v-for="item in cityList" :value="item.value" :label="item.label" :key="item.value"></Option>
       </Select>
+      {{model1}}
       <Select class="select" :placeholder="placeholder" v-model="model2" style="width:200px">
         <Option v-for="item in cityList" :value="item.value" :label="item.label" :icon="item.icon" :key="item.value"></Option>
       </Select>
+      {{model2}}
       <Select class="select" :placeholder="placeholder2" :filterable="filterable" v-model="model3" style="width:200px">
         <Option v-for="item in cityList" :value="item.value" :label="item.label" :icon="item.icon" :key="item.value"></Option>
       </Select>
-      <Select class="select" :placeholder="placeholder" :multiple="multiple" v-model="model4" style="width:200px">
+      {{model3}}
+      <Select class="select" :placeholder="placeholder"  :multiple="multiple" v-model="model4" style="width:200px">
         <Option v-for="item in cityList" :value="item.value" :label="item.label" :key="item.value"></Option>
       </Select>
+      {{model4}}
     </div>
 </template>
 
