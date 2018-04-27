@@ -55,7 +55,9 @@ export default {
         },
         stateList:{
             type:Array,
-            default:['待处理', '处理中', '已完结']
+            default:function () {
+                return ['待处理', '处理中', '已完结'];
+            }
         }
     },
     data () {
