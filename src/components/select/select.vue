@@ -38,7 +38,7 @@
                 v-show="dropVisible"
                 ref="dropdown">
                 <ul v-show="notFoundShow" :class="[prefixCls + '-not-found']"><li>{{ localeNotFoundText }}</li></ul>
-                <ul v-show="(!notFound && !remote) || (remote && !loading && !notFound)" :class="[prefixCls + '-dropdown-list']"><slot></slot></ul>
+                <ul v-show="(!notFound ) || (!loading && !notFound)" :class="[prefixCls + '-dropdown-list']"><slot></slot></ul>
                 <ul v-show="loading" :class="[prefixCls + '-loading']">{{ localeLoadingText }}</ul>
             </div>
         </transition>
@@ -80,28 +80,12 @@ export default {
             default: false
         },
         placeholder: {
-            type: String
+            type: String,
+            default:'请选择'
         },
         filterable: {
             type: Boolean,
             default: false
-        },
-        filterMethod: {
-            type: Function
-        },
-        remote: {
-            type: Boolean,
-            default: false
-        },
-        remoteMethod: {
-            type: Function
-        },
-        loading: {
-            type: Boolean,
-            default: false
-        },
-        loadingText: {
-            type: String
         },
         size: {
             validator (value) {
@@ -139,6 +123,8 @@ export default {
     },
     data () {
         return {
+            loading: false,
+            loadingText:'',
             prefixCls: prefixCls,
             visible: false,
             options: [],
@@ -192,7 +178,7 @@ export default {
         dropVisible () {
             let status = true;
             const options = this.$slots.default || [];
-            if (!this.loading && this.remote && this.query === '' && !options.length) status = false;
+            if (!this.loading && this.query === '' && !options.length) status = false;
             if (this.autoComplete && !options.length) status = false;
             return this.visible && status;
         },
@@ -226,7 +212,7 @@ export default {
         },
         notFoundShow () {
             const options = this.$slots.default || [];
-            return (this.notFound && !this.remote) || (this.remote && !this.loading && !options.length);
+            return (this.notFound ) || (!this.loading && !options.length);
         }
     },
     methods: {
@@ -247,7 +233,7 @@ export default {
                             }
                         });
             // 如果删除了搜索词，下拉列表也清空了，所以强制调用一次remoteMethod
-                        if (this.remote && this.query !== this.lastQuery) {
+                        if (this.query !== this.lastQuery) {
                             this.$nextTick(() => {
                                 this.query = this.lastQuery;
                             });
@@ -313,7 +299,7 @@ export default {
         },
         updateMultipleSelected (init = false, slot = false) {
             if (this.multiple && Array.isArray(this.model)) {
-                let selected = this.remote ? this.selectedMultiple : [];
+                let selected = [];
                 for (let i = 0; i < this.model.length; i++) {
                     const model = this.model[i];
                     for (let j = 0; j < this.options.length; j++) {
@@ -335,7 +321,7 @@ export default {
                     }
                 });
                 // #2066
-                this.selectedMultiple = this.remote ? this.model.length ? selectedArray : [] : selected;
+                this.selectedMultiple = selected;
                 if (slot) {
                     let selectedModel = [];
                     for (let i = 0; i < selected.length; i++) {
@@ -401,10 +387,6 @@ export default {
         removeTag (index) {
             if (this.disabled) {
                 return false;
-            }
-            if (this.remote) {
-                const tag = this.model[index];
-                this.selectedMultiple = this.selectedMultiple.filter(item => item.value !== tag);
             }
             this.model.splice(index, 1);
             if (this.filterable && this.visible) {
@@ -479,31 +461,6 @@ export default {
             }
         },
         query (val) {
-      // if (this.remote && this.remoteMethod) {
-      //   if (!this.selectToChangeQuery) {
-      //     this.$emit('on-query-change', val)
-      //     this.remoteMethod(val)
-      //   }
-      //   this.focusIndex = 0
-      //   this.findChild(child => {
-      //     child.isFocus = false
-      //   })
-      // } else {
-      //   if (!this.selectToChangeQuery) {
-      //     this.$emit('on-query-change', val)
-      //   }
-      //   this.broadcastQuery(val)
-      //   let isHidden = true
-      //   this.$nextTick(() => {
-      //     this.findChild((child) => {
-      //       if (!child.hidden) {
-      //         isHidden = false
-      //       }
-      //     })
-      //     this.notFound = isHidden
-      //   })
-      // }
-      // this.selectToChangeQuery = false
             if (!this.selectToChangeQuery) {
                 this.$emit('on-query-change', val);
             }
