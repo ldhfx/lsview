@@ -1,26 +1,58 @@
-@collapse-prefix-cls: ~"@{css-prefix}collapse";
+@collapse-prefix-cls: ~"@{css-prefix-new}collapse";
 
 .@{collapse-prefix-cls}{
-    background-color: @background-color-base;
+    background-color: @background-color;
     border-radius: 3px;
-    border: 1px solid @border-color-base;
-
     & > &-item{
-        border-top: 1px solid @border-color-base;
+        cursor: pointer;
+        border-color: @color-white;
+        border-top: 1px solid @color-white;
+        border-left: 2px solid @color-white;
+        border-top: 1px solid @color-white;
+        border-right: 2px solid @color-white;
         &:first-child {
             border-top: 0;
+            border-top: 2px solid @color-white;
+        }
+        &:last-child {
+            border-bottom: 2px solid @color-white;
+        }
+        &:first-child.@{collapse-prefix-cls}-item-active {
+            border-bottom: 1px solid @color-warm !important;
+            margin-bottom: 2px;
+            border-color: @color-warm;
+        }
+        &:first-child:not(.@{collapse-prefix-cls}-active) {
+            border-bottom: 1px solid @color-white;
+        }
+        &:last-child.@{collapse-prefix-cls}-item-active {
+            margin-top: 2px;
+            border-color: @color-warm;
+        }
+        &:last-child:not(.@{collapse-prefix-cls}-item-active) {
+            border-top: 1px solid @color-white;
+        }
+        &.@{collapse-prefix-cls}-item-active:not(:first-child):not(:last-child) {
+            margin: 2px 0;
+            border-color: @color-warm;
+            border-bottom: 1px solid @color-warm;
+        }
+        &:not(.@{collapse-prefix-cls}-item-active):not(:first-child):not(:last-child) {
+            border-bottom: 1px solid @color-white;
         }
 
         > .@{collapse-prefix-cls}-header{
-            height: 38px;
-            line-height: 38px;
-            padding-left: 32px;
-            color: #666;
-            cursor: pointer;
-            position: relative;
 
+            background-color: rgba(0,0,0,0);
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: @color-white;
+            height: 36px;
+            line-height: 36px;
+            padding-left: 36px;
             > i{
-                transition: transform @transition-time @ease-in-out;
+                position: relative;
+                right: 15px;
             }
         }
     }
@@ -29,19 +61,22 @@
     }
 
     &-content{
-        //display: none;
-        //overflow: hidden;
         color: @text-color;
         padding: 0 16px;
-        background-color: #fff;
-
+        background-color: rgba(0,0,0,0.00);
         & > &-box {
             padding-top: 16px;
             padding-bottom: 16px;
         }
     }
-    &-item-active > &-content{
-        //display: block;
+    &-item-active {
+        .@{collapse-prefix-cls}-header{
+            border-color: @color-warm;
+            color: @color-warm !important;
+        }
+        .@{collapse-prefix-cls}-content{
+            color: @color-warm;
+        }
     }
     &-item:last-child {
         > .@{collapse-prefix-cls}-content {

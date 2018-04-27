@@ -24,7 +24,8 @@ const components = {
     Input,
     InputNumber,
 
-    Collapse
+    Collapse,
+    Panel: Collapse.Panel
    
 };
 
