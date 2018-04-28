@@ -1,5 +1,5 @@
-@modal-prefix-cls: ~"@{css-prefix}modal";
-@confirm-prefix-cls: ~"@{css-prefix}modal-confirm";
+@modal-prefix-cls: ~"@{css-prefix-new}modal";
+@confirm-prefix-cls: ~"@{css-prefix-new}modal-confirm";
 
 .@{modal-prefix-cls} {
     width: auto;
@@ -35,30 +35,44 @@
 
     &-content {
         position: relative;
-        background-color: #fff;
-        border: 0;
-        border-radius: @border-radius-base;
+        // background-color: #fff;
+        //border: 0;
+        //border-radius: @border-radius-base;
         background-clip: padding-box;
+
+        background: @background-color;
+        border-radius: 0px;
+        border: 1px solid @color-Tangerine;
     }
 
     &-header {
         .content-header;
+        border-bottom-color: @color-Tangerine;
+        padding: 10px;
+        .@{modal-prefix-cls}-header-inner {
+            color: @color-Tangerine;
+            font-weight: normal;
+        }
     }
 
     &-close {
         .content-close(1px, 31px);
+        top: -3px;
     }
 
     &-body {
-        padding: 16px;
+        //padding: 16px;
         font-size: 12px;
         line-height: 1.5;
+        color: @color-white;
+        padding: 16px 10px;
     }
 
     &-footer {
-        border-top: 1px solid @border-color-split;
+        border-top: 1px solid @color-Tangerine;
         padding: 12px 18px 12px 18px;
         text-align: right;
+
         button + button {
             margin-left: 8px;
             margin-bottom: 0;

@@ -23,6 +23,7 @@ nav {
                 <li><router-link to="/radio">Radio</router-link></li>
                 <li><router-link to="/input">Input</router-link></li>
                 <li><router-link to="/collapse">Collapse</router-link></li>
+                <li><router-link to="/modal">Modal</router-link></li>
             </ul>
         </nav>
         <router-view></router-view>

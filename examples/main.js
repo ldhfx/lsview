@@ -39,6 +39,9 @@ const router = new VueRouter({
         },{
             path: '/collapse',
             component: (resolve) => require(['./routers/collapse.vue'], resolve)
+        },{
+            path: '/modal',
+            component: (resolve) => require(['./routers/modal.vue'], resolve)
         }
     ]
 });

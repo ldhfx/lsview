@@ -9,6 +9,7 @@ import Input from './components/input';
 import InputNumber from './components/input-number';
 
 import Collapse from './components/collapse';
+import Modal from './components/modal';
 
 import locale from './locale/index';
 
@@ -25,7 +26,8 @@ const components = {
     InputNumber,
 
     Collapse,
-    Panel: Collapse.Panel
+    Panel: Collapse.Panel,
+    Modal
    
 };
 
